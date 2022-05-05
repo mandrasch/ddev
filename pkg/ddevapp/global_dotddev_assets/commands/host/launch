@@ -56,9 +56,16 @@ if [ ! -z ${DDEV_DEBUG:-} ]; then
     printf "FULLURL $FULLURL\n" && exit 0
 fi
 
+ 
+
+
 case $OSTYPE in
   linux-gnu)
-    xdg-open ${FULLURL}
+    if [ -z "$GITPOD_REPO_ROOT" ]; then
+      gp preview $(gp url 8080)
+    else
+     xdg-open ${FULLURL}
+    fi
     ;;
   "darwin"*)
     open ${FULLURL}
