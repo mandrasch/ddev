@@ -61,7 +61,7 @@ fi
 
 case $OSTYPE in
   linux-gnu)
-    if [ -z "$GITPOD_REPO_ROOT" ]; then
+    if [ ! -z "$GITPOD_REPO_ROOT" ]; then
       gp preview $(gp url 8080)
     else
      xdg-open ${FULLURL}
